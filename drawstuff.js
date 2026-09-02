@@ -511,7 +511,8 @@ function main() {
     var context = canvas.getContext("2d");
     var w = context.canvas.width; // as set in html
     var h = context.canvas.height;  // as set in html
-    var imagedata = context.createImageData(w,h);
+    var imagedata1 = context.createImageData(w,h);
+    var imagedata2 = context.createImageData(w,h);
     
     // define polygon and view
     var testEye = new Vector(0,0,0);
@@ -524,11 +525,12 @@ function main() {
                 {x:20,y:10,z:10,c:new Color(0,0,0,255)}, {x:20,y:10,z:10,c:new Color(0,0,255,255)}];
     
     // Define and render a rectangle in 2D with colors and coords at corners
-    projectPoly(imagedata,poly1,view);
-    fillPoly(imagedata,poly1);
+    projectPoly(imagedata1,poly1,view);
+    fillPoly(imagedata1,poly1);
 
-    projectPoly(imagedata,poly2,view);
-    fillPoly(imagedata,poly2);
+    projectPoly(imagedata2,poly2,view);
+    fillPoly(imagedata2,poly2);
     
-    context.putImageData(imagedata, 0, 0); // display the image in the context
+    context.putImageData(imagedata1, 0, 0); // display the image in the context
+    context.putImageData(imagedata2, 0, 0);
 }
