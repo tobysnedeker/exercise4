@@ -507,30 +507,62 @@ function projectPoly(imagedata,poly,view) {
 function main() {
 
     // Get the canvas, context, and image data
-    var canvas = document.getElementById("viewport"); 
+    var canvas = document.getElementById("viewport1"); 
     var context = canvas.getContext("2d");
     var w = context.canvas.width; // as set in html
     var h = context.canvas.height;  // as set in html
-    var imagedata1 = context.createImageData(w,h);
-    var imagedata2 = context.createImageData(w,h);
+    var imagedata = context.createImageData(w,h);
     
     // define polygon and view
     var testEye = new Vector(0,0,0);
     var testAt = Vector.subtract(new Vector(0,0,10),testEye);
     var view = {eye:testEye, at:testAt, up:new Vector(0,1,0)};
-    var poly1 = [{x:-5,y:5,z:10,c:new Color(255,0,0,255)}, {x:5,y:5,z:10,c:new Color(0,255,0,255)}, 
+    var poly = [{x:-5,y:5,z:10,c:new Color(255,0,0,255)}, {x:5,y:5,z:10,c:new Color(0,255,0,255)}, 
                 {x:5,y:-5,z:10,c:new Color(0,0,0,255)}, {x:-5,y:-5,z:10,c:new Color(0,0,255,255)}];
-
-    var poly2 = [{x:10,y:20,z:10,c:new Color(255,0,0,255)}, {x:20,y:20,z:10,c:new Color(0,255,0,255)}, 
-                {x:20,y:10,z:10,c:new Color(0,0,0,255)}, {x:20,y:10,z:10,c:new Color(0,0,255,255)}];
     
     // Define and render a rectangle in 2D with colors and coords at corners
-    projectPoly(imagedata1,poly1,view);
-    fillPoly(imagedata1,poly1);
-
-    projectPoly(imagedata2,poly2,view);
-    fillPoly(imagedata2,poly2);
+    projectPoly(imagedata,poly,view);
+    fillPoly(imagedata,poly);
     
-    context.putImageData(imagedata1, 0, 0); // display the image in the context
-    context.putImageData(imagedata2, 0, 0);
+    context.putImageData(imagedata, 0, 0); // display the image in the context
+    
+    // Get the canvas, context, and image data
+    var canvas = document.getElementById("viewport2"); 
+    var context = canvas.getContext("2d");
+    var w = context.canvas.width; // as set in html
+    var h = context.canvas.height;  // as set in html
+    var imagedata = context.createImageData(w,h);
+    
+    // define polygon and view
+    var testEye = new Vector(0,0,20);
+    var testAt = Vector.subtract(new Vector(0,0,0),testEye);
+    var view = {eye:testEye, at:testAt, up:new Vector(1,1,0)};
+    var poly = [{x:-5,y:5,z:10,c:new Color(255,0,0,255)}, {x:5,y:5,z:10,c:new Color(0,255,0,255)}, 
+                {x:5,y:-5,z:10,c:new Color(0,0,0,255)}, {x:-5,y:-5,z:10,c:new Color(0,0,255,255)}];
+    
+    // Define and render a rectangle in 2D with colors and coords at corners
+    projectPoly(imagedata,poly,view);
+    fillPoly(imagedata,poly);
+    
+    context.putImageData(imagedata, 0, 0); // display the image in the context
+
+    // Get the canvas, context, and image data
+    var canvas = document.getElementById("viewport3"); 
+    var context = canvas.getContext("2d");
+    var w = context.canvas.width; // as set in html
+    var h = context.canvas.height;  // as set in html
+    var imagedata = context.createImageData(w,h);
+    
+    // define polygon and view
+    var testEye = new Vector(-5,2,0);
+    var testAt = Vector.subtract(new Vector(0,0,10),testEye);
+    var view = {eye:testEye, at:testAt, up:new Vector(0,1,0)};
+    var poly = [{x:-5,y:5,z:10,c:new Color(255,0,0,255)}, {x:5,y:5,z:10,c:new Color(0,255,0,255)}, 
+                {x:5,y:-5,z:10,c:new Color(0,0,0,255)}, {x:-5,y:-5,z:10,c:new Color(0,0,255,255)}];
+    
+    // Define and render a rectangle in 2D with colors and coords at corners
+    projectPoly(imagedata,poly,view);
+    fillPoly(imagedata,poly);
+    
+    context.putImageData(imagedata, 0, 0); // display the image in the context
 }
